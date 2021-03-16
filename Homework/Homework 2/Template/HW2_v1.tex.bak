@@ -1,0 +1,84 @@
+\documentclass[10pt]{amsart}
+\usepackage{amsmath,amsfonts}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{tkz-euclide}
+\usepackage{nopageno}
+
+
+%Style section
+\setlength{\textheight}{10in}
+\setlength{\textwidth}{6.5in}
+\hoffset=-0.75in
+\voffset=-1in
+% \pagestyle{plain}
+% \setlength{\topmargin}{0in}
+% \setlength{\headsep}{0in}
+% \setlength{\oddsidemargin}{0in}
+% \setlength{\evensidemargin}{0in}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% My shorthands commands %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\bff}{{\bf f}}
+\newcommand{\bfx}{{\bf x}}
+\newcommand{\bfb}{{\bf b}}
+\newcommand{\bfu}{{\bf u}}
+\newcommand{\bfv}{{\bf v}}
+\newcommand{\bfh}{{\bf h}}
+\newcommand{\bfy}{{\bf y}}
+\newcommand{\bfe}{{\bf e}}
+\newcommand{\bfz}{{\bf z}}
+\newcommand{\bfw}{{\bf w}}
+\newcommand{\bfr}{{\bf r}}
+\newcommand{\bfL}{{\bf L}}
+\newcommand{\bfX}{{\bf X}}
+\newcommand{\bfY}{{\bf Y}}
+\newcommand{\bfE}{{\bf E}}
+\newcommand{\bfA}{{\bf A}}
+\newcommand{\bfI}{{\bf I}}
+
+\DeclareMathOperator{\argmin}{\text{argmin}}
+
+
+\begin{document}
+
+\noindent
+{Math 118 \hfill Homework Assignment 1 Spring 2020}
+%\vskip 0.1truein
+\bigskip
+\begin{quote}\emph{This is your first homework assignment. I strongly encourage you to typeset it using the LaTeX template provided. It is due by Monday, January 13th.} \\
+\end{quote}
+\hrulefill
+\vskip 0.1truein
+
+\begin{enumerate}
+
+\item Verify that the following matrices are orthogonal. {\em Note there may be a little bit of rounding error.} \\
+$$
+Q_1 = \left[\begin{matrix} 0.1817 & 0.7236 & 0.6658 \\ 0.6198 & -0.61 & 0.4938 \\ -0.7634 & -0.3230 & 0.5594 \end{matrix}\right] \quad Q_2 = \left[\begin{matrix} 0.6404 & 0.3577 & -0.6797 \\ -0.3121 & 0.9298 & 0.1952 \\ 0.7010 & 0.0872 & 0.7071 \end{matrix}\right]
+$$
+
+\item Consider the least squares problem $\displaystyle \bfx^{*} = \argmin_{\bfx\in\mathbb{R}^{4}} \|A\bfx - \bfb\|_{2}$ where $A$ and $\bfb$ are given below. Find $\bfx^{*}$ using the QR decomposition method, where $Q$ and $R$ are also given below.
+\begin{align*}
+& A = \left[\begin{matrix} 0.7922 & 0.6787 & 0.7060 & 0.6948 \\ 0.9595 & 0.7577 & 0.0318 & 0.3171 \\ 0.6557 & 0.7431 & 0.2769 & 0.9502 \\ 0.0357 & 0.3922 & 0.0462 & 0.0344 \\ 0.8491 & 0.6555 & 0.0971 & 0.4387 \\ 0.9340 & 0.1712 & 0.8235 & 0.3816 \end{matrix} \right] \quad \bfb = \left[\begin{matrix} 0.7655 \\ 0.7952 \\ 0.1869 \\ 0.4898 \\ 0.4456 \\ 0.6463 \end{matrix}\right] \\
+&  Q = \left[\begin{matrix} -0.4191 & -0.1861 & -0.5979 & -0.1311 & -0.2584 & -0.5901 \\ -0.5076 & -0.1321 & 0.5495 & -0.3017 & -0.5548 & 0.1553 \\ -0.3469 & -0.4172 & -0.1468 & 0.7373 & -0.0250 & 0.3739 \\ -0.0189 & -0.5331 & -0.2732 & -0.5822 & 0.3160 & 0.4494 \\ -0.4492 & -0.0950 & 0.3924 & 0.0215 & 0.7089 & -0.3637 \\ -0.4941 & 0.6933 & -0.3005 & -0.0938 & 0.1500 & 0.3919 \end{matrix}\right] \quad R_1 = \left[\begin{matrix} -1.8902 & -1.3134 & -0.8595 & -1.1681 \\ 0 & -0.6892 & 0.2859 & -0.3632 \\ 0 & 0 & -0.6673 & -0.3327 \\ 0 & 0 & 0 & 0.4674 \end{matrix}\right]
+\end{align*}
+
+\item {\bf (Optional)} Verify your answer from question 2 using a computer. You can use either $A\setminus\bfb$ in MATLAB or {\tt np.linalg.lstsq(A,b)} in Python. Note that you can also verify the QR decomposition by using the command {\tt qr(A)} in MATLAB or  {\tt np.linalg.qr(A)} in Python.
+
+\item Prove that if $Q_1$ and $Q_2$ are orthogonal then so is $Q_1Q_2$. {\em Hint: There are multiple ways to show this. You may want to prove that all the columns of the new matrix $Q_1Q_2$ are orthonormal. Or you may want to show that $(Q_1Q_2)^{-1} = (Q_1Q_2)^{\top}$.} \\
+
+\item For all parts of this question let $A = \left[\begin{matrix} 3 & 3  & 1 \\ 3 & 2 & 2 \\ 1 & 1 & 3 \end{matrix}\right]$ 
+
+\begin{enumerate}
+\item Find the eigenvalues and corresponding eigenvectors of $A$. \\
+\item Use your answer to part (a) to compute $\|A\|_2$. \\
+\item {\bf (Optional)} Verify your answer to part (a) using a computer. You can use either {\tt eig(A)} on MATLAB or {\tt np.linalg.eig(A)} in Python. \\ 
+\end{enumerate}
+
+\end{enumerate}
+
+
+\end{document}

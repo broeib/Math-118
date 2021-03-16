@@ -1,0 +1,172 @@
+\documentclass[12pt]{article}
+%% make references and citations clickable
+\usepackage[backref,colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue, pdfborder={0 0 0}]{hyperref}
+
+%% set the paper geometry
+\usepackage[left=1in,top=1in,right=1in,bottom=1in,letterpaper]{geometry}
+
+%% uncomment the next line if you need to present an algorithm
+%\usepackage{algorithm,algorithmic}
+
+%% standard AMS stuff
+\usepackage{amssymb,amsmath,amsthm}
+
+%% for including urls by \url{url text}
+\usepackage{url}
+
+%% Some useful shorthand commands
+\newcommand{\bfx}{{\bf x}}
+\newcommand{\bfb}{{\bf b}}
+\newcommand{\bfu}{{\bf u}}
+\newcommand{\bfv}{{\bf v}}
+\newcommand{\bfw}{{\bf w}}
+
+%% Define Q.E.D. symbol
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\begin{document}
+%% -------------- Problem ------------------ 
+\newpage
+
+\subsection*{Problem 1} Suppose that $A\in\mathbb{R}^{m\times n}$, $\bfv\in\mathbb{R}^{n}$ and $B\in\mathbb{R}^{n\times r}$. Determine the number of floating point operations ({\em ie} additions,  multiplications and divisions) required to compute (a) $A\bfv$ and (b) $AB$.
+
+\medskip
+\noindent\textbf{Answer:} 
+\\~\\\textbf{(a)} $A^{m\times n}\times\bfv^{n\times 1} = \bfb^{m\times 1}$. This requires $m\times n$ operations. When doing matrix vector multiplication, you start by multiplying the first row of the matrix (n elements) with the column vector (n elements), which requires n operations. You have to repeat this process for all m rows of the matrix, hence this requires $m\times n$ floating point operations.
+\\~\\\textbf{(b)} $A^{m\times n}\times\ B^{n\times r}=C^{m\times r}$. This requires $(m\times r)n$ operations. The resulting matrix $C$ has $m\times r$ elements and to get each of those, you need to multiply a row of $A$ with a column of $B$, which is n floating point operations. Thus, there are a total of $m\times r\times n$ floating point operations.
+
+%% -------------- Problem ------------------
+\newpage
+\subsection*{Problem 2. (10 points)} Let $\bfv = [1,0,5,-3]^{\top}$ and $\bfw = [-2,4,5,1]$.
+\begin{enumerate}
+	\item Compute $\|\bfv\|_1$, $\|\bfw\|_{3}$ and $\|\bfv\|_{\infty}$. \\
+	\item Verify that $\langle\bfv,\bfw\rangle \leq \|\bfv\|_2\|\bfw\|_2$ by computing both sides. \\
+\end{enumerate}
+
+\medskip
+\noindent\textbf{Answer:} 
+\\~\\\textbf{(a)} $\displaystyle \|\mathbf{v}\|_{1} := \left(\sum_{i=1}^{4} |v_i|^{1}\right)^{1/1}$
+\\$=|1|+|0|+|5|+|-3|=9$
+\\~\\\indent\hspace{0.1pt} $\displaystyle\|\bfw\|_{3} := \left(\sum_{i=1}^{4} |w_i|^{3}\right)^{1/3}$
+\\$=\left(|-2|^3+|4|^3+|5|^3+|1|^3=9\right)^{1/3}$
+\\$=\left(8+64+125+1\right)^{1/3}$
+\\$=\sqrt[3]{198}\approx5.828$
+\\~\\\indent\hspace{0.1pt} $\displaystyle\|\bfv\|_{\infty} := max_i|v_i|$
+\\when $i=3$, $|v_i|=5$, which is the maximum. Therefore $\|v_{\infty}\|=5$
+\\~\\~\\\textbf{(b)} $\langle\bfv,\bfw\rangle \leq \|\bfv\|_2\|\bfw\|_2$
+\\~\\LHS $=\langle\bfv,\bfw\rangle = \langle[1,0,5,-3]^{\top}, [-2,4,5,1]^{\top}\rangle$
+$=(1\times -2)+(0\times 4)+(5\times 5)+(-3\times 1)=20$
+\\~\\RHS $=\|\bfv\|_2\|\bfw\|_2=\sqrt{1^2+0^2+5^2+3^2}\times \sqrt{2^2+4^2+5^2+1^2}$
+\\$=\sqrt{35}\times \sqrt{46}=\sqrt{1610}\approx40.125$
+\\~\\$20 \leq40.125$
+\\LHS $\leq$ RHS
+\\$\langle\bfv,\bfw\rangle \leq \|\bfv\|_2\|\bfw\|_2$ \qedsymbol
+
+%% -------------- Problem ------------------
+\newpage
+\subsection*{Problem 3. (10 points)} Show that $\displaystyle \|\mathbf{v}\|_{p} := \left(\sum_{i=1}^{n} |v_i|^{p}\right)^{1/p}$ is a norm for $1\leq p \leq \infty$. {\em Hint: you will need to use H\"{o}lder's inequality:
+$$
+\sum_{i=1}|v_iw_i| \leq \|\bfv\|_{p}\|\bfw\|_{q} \text{ for all } \bfv, \bfw\in\mathbb{R}^{n} \text{ and } q:= 1-\frac{1}{p}
+$$
+}
+
+\medskip
+\noindent\textbf{Answer:}
+\\~\\In order for a function to be a norm, it must satisfy positive homogeneity, definiteness, and the triangle inequality.
+\\~\\\textbf{(a)} $\|\alpha\bfv\|=|\alpha|\|\bfv\|\;\forall\:\alpha\in\mathbb{R}$, $\bfv\in\mathbb{R}^{n}$
+\\$\hspace*{21pt}\displaystyle\|\alpha\bfv\|_{p} := \left(\sum_{i=1}^{n} |\alpha v_i|^{p}\right)^{1/p}=\left(\sum_{i=1}^{n} |\alpha||v_i|^{p}\right)^{1/p}=|\alpha|^{p/p}\left(\sum_{i=1}^{n} |v_i|^{p}\right)^{1/p}=|\alpha|\|\bfv\|_p$
+\\~\\~\\\textbf{(b)} $\|\bfv\|=0\iff\bfv=0$
+\\~\\$\hspace*{21pt}\displaystyle\left(\sum_{i=1}^{n} |v_i|^{p}\right)^{1/p}$
+\\~\\$\hspace*{21pt}$Case 1: $v_i<0$, then $|v_i|^p>0$
+\\$\hspace*{21pt}$Case 2: $v_i>0$, then $|v_i|^p>0$ (Because of the absolute value)
+\\$\hspace*{21pt}$Case 3: $v_i=0$, then $|v_i|^p=0$
+\\~\\$\hspace*{21pt}$In order for the sum to be zero, every element $v_i$ has to be zero, so that $|v_i|^p=0$.
+\\~\\~\\\textbf{(c)} (Could not figure out, and this problem is not required)
+
+%% -------------- Problem ------------------
+\newpage
+\subsection*{Problem 4. (10 points)} Prove that $\lim_{p\to\infty} \|\bfv\|_p=\|v\|_{\infty}$
+
+\medskip
+\noindent\textbf{Answer:} We define $\displaystyle \|\mathbf{v}\|_{p} := \left(\sum_{i=1}^{n} |v_i|^{p}\right)^{1/p}$
+\\Let $\|\bfv\|_{\infty}=\max _{i}|v_{i}|$
+\\~\\$\displaystyle \|\mathbf{v}\|_{p} = \|\bfv\|_{\infty}\frac{\left(\sum_{i=1}^{n} |v_i|^{p}\right)^{1/p}}{\|\bfv\|_{\infty}}$
+\\$\displaystyle=\|\bfv\|_{\infty}\left(\sum_{i=1}^{n} \frac{|v_i|^{p}}{\|\bfv\|^p_{\infty}}\right)^{1/p}$
+\\$\displaystyle=\|\bfv\|_{\infty}\left(\sum_{i=1}^{n} \left(\frac{|v_i|}{\|\bfv\|_{\infty}}\right)^p\right)^{1/p}$
+\\$\leq\|\bfv\|_{\infty}n^{1/p}$ (We know this because $\left(\frac{|v_i|}{\|\bfv\|_{\infty}}\right)^p\leq 1\;\forall\:i\in\mathbb{N}_{\leq n}$ since $\|v\|_{\infty}\geq|v_i|$ for all $i$)
+\\(*) We also know that $\|v\|_{\infty} \leq\|v\|_p\;\forall\:p\in\mathbb{N}_{< \infty}$
+\\therefore, $\|v\|_{\infty} \leq\|v\|_p \leq\|v\|_{\infty} n^{1/p}$
+\\~\\Because of statement (*), we can say that $\|v\|_{\infty}\leq\lim_{p\to\infty} \|\bfv\|_p$
+\\Therefore, $\|v\|_{\infty}\leq\lim_{p\to\infty} \|\bfv\|_p\leq\lim_{p\to\infty}n^{\frac{1}{p}}=\|v\|_{\infty}$
+\\~\\Since $\|v\|_{\infty}\leq\lim_{p\to\infty} \|\bfv\|_p\leq\|v\|_{\infty}$, we can conclude that $\lim_{p\to\infty} \|\bfv\|_p=\|v\|_{\infty}$, 
+\\as desired \qedsymbol
+
+%% -------------- Problem ------------------
+\newpage
+\subsection*{Problem 5. (10 points)} Prove that $\displaystyle\|A\|_{\infty}=\max_{1 \leq i\leq n}\sum_{j=1}^{m}|a_{i j}|$
+
+\medskip
+\noindent\textbf{Answer:} $\displaystyle\|A\|_{\infty}=\max_{\|\bfv\|_{\infty}=1}\|A\bfv\|_{\infty}$
+\\$\displaystyle=\max _{\|\bfv\|_{\infty}=1} \max _{i=1, \ldots, n}\left|\sum_{j=1}^{m} a_{i j} v_{j}\right|$
+\\$\displaystyle= \max _{i=1, \ldots, n}\max _{\|\bfv\|_{\infty}=1}\left|\sum_{j=1}^{m} a_{i j} v_{j}\right|$
+\\$\displaystyle=\max _{i=1, \ldots, n} \sum_{j=1}^{m}\left|a_{i j}\right|$ (We know this since $\|\bfv\|_{\infty}=1$.)
+\\$\displaystyle=\max_{1 \leq i\leq n}\sum_{j=1}^{m}|a_{i j}|$, as desired \qedsymbol
+
+%% -------------- Problem ------------------
+\newpage
+\subsection*{Problem 6. (10 points)} Suppose that $A \in \mathbb{R}^{m \times n}$, $\mathbf{b} \in \mathbb{R}^{m}$ and $\mathbf{x} \in \mathbb{R}^{n} $. 
+\\Let $f(\mathbf{x})=\|\mathbf{b}-A \mathbf{x}\|_{2}^{2}$. Show that $\nabla f(\mathbf{x})=2 A^{\top}(A \mathbf{x}-\mathbf{b})$
+
+\bigskip
+\noindent\textbf{Answer:} $f(\mathbf{x})=\|\mathbf{b}-A \mathbf{x}\|_{2}^{2}$
+\\Let $\bfw=\bfb-A\bfx$
+\\$\displaystyle\|\bfw\|_2^2=\left(\left(\sum_{k=1}^{n}w_k^2\right)^{1/2}\right)^2=\sum_{k=1}^{n}w_k^2=\sum_{k=1}^{n}\left(\bfb-A\bfx\right)_k^2$
+\\$\displaystyle\nabla f(\mathbf{x})=\nabla\|\bfb-A\bfx\|_2^2=\frac{\partial}{\partial x_j}\sum_{k=1}^{n}\left(\bfb-A\bfx\right)^2=\sum_{k=1}^{n}\frac{\partial}{\partial x_j}\left(\bfb-A\bfx\right)^2=\sum_{k=1}^{n}2\left(\bfb-A\bfx\right)\frac{\partial}{\partial x_j}\left(\bfb-A\bfx\right)$
+\\$\displaystyle=\sum_{k=1}^{n}2\left(\bfb-A\bfx\right)\frac{\partial}{\partial x_j}\left(\bfb-A\bfx\right)$
+\\(This is as far as I could get on number 6. I was just trying to manipulate the formulas but I did not know how to continue from here).
+\\------------------------------------------------------------------------------------------------------------------------
+\\Attempt 2:
+
+%% -------------- Problem ------------------
+\newpage
+\subsection*{Problem 7. (10 points)} Let $A=\left[\begin{array}{ccc}{0} & {6} & {-1} \\ {3} & {5} & {2} \\ {1} & {-2} & {4}\end{array}\right]$ and $\mathbf{b}=\left[\begin{array}{l}{1} \\ {5} \\ {3}\end{array}\right]$
+\\~\\(a) Find $L$, $U$ and $P$ such that $PA = LU$ and $L$ is lower triangular with ones on the diagonal, $U$ is
+upper triangular and $P$ is a permutation matrix.
+\\(b) Use this $LU$ decomposition to solve the linear system $A\bfx = \bfb$.
+
+\bigskip
+\noindent\textbf{Answer:} 
+\\~\\\textbf{(a)} Let $PA^*=\left[\begin{array}{ccc}{3} & {5} & {2} \\ {0} & {6} & {-1} \\ {1} & {-2} & {4}\end{array}\right]$ Where $P=\left[\begin{array}{ccc}{0} & {1} & {0} \\ {1} & {0} & {0} \\ {0} & {0} & {1}\end{array}\right]$ (Swap rows 1 and 2 of $A$), and 
+\\~\\$A^*=\left[\begin{array}{ccc}{3} & {5} & {2} \\ {0} & {6} & {-1} \\ {1} & {-2} & {4}\end{array}\right]$. Let $L=\left[\begin{array}{ccc}{1} & {0} & {0} \\ {\ell_{21}} & {1} & {0} \\ {\ell_{31}} & {\ell_{32}} & {1}\end{array}\right]$ and $U=\left[\begin{array}{ccc}{u_{11}} & {u_{12}} & {u_{13}} \\ {0} & {u_{22}} & {u_{23}} \\ {0} & {0} & {u_{33}}\end{array}\right]$ 
+\\~\\such that $PA^*=LU$. $PA^*\bfx=\bfb\iff LU\bfx=\bfb$. Let $\mathbf{y}=U\bfx$. Then $L\mathbf{y}=\bfb$.
+\\~\\~\\$\left[\begin{array}{ccc}{3} & {5} & {2} \\ {0} & {6} & {-1} \\ {1} & {-2} & {4}\end{array}\right] (R_3-1/3\times R_1)=\left[\begin{array}{ccc}{3} & {5} & {2} \\ {0} & {6} & {-1} \\ {0} & {-11/3} & {10/3}\end{array}\right] (R_3+11/18\times R_2)$
+\\~\\$=\left[\begin{array}{ccc}{3} & {5} & {2} \\ {0} & {6} & {-1} \\ {0} & {0} & {49/18}\end{array}\right]=U$. $L=\left[\begin{array}{ccc}{1} & {0} & {0} \\ {0} & {1} & {0} \\ {-1/3} & {11/18} & {1}\end{array}\right]$ (Inserting the $k$ values). 
+\\~\\Finally, we have found L, U, and P.
+\\~\\\textbf{(b)} $PA^*\bfx=\bfb\iff LU\bfx=\bfb$. Let $\mathbf{y}=U\bfx$. Then $L\mathbf{y}=\bfb$.
+\\~\\$\left[\begin{array}{ccc}{1} & {0} & {0} \\ {0} & {1} & {0} \\ {-1/3} & {11/18} & {1}\end{array}\right]\left[\begin{array}{l}{y_{1}} \\ {y_{2}} \\ {y_{3}}\end{array}\right]=\left[\begin{array}{l}{1} \\ {5} \\ {3}\end{array}\right]$
+\\~\\$y_1=1$. 
+\\$0y_1+y_2=5$. $y_2=5$.
+\\$-1/3y_1+11/18y_2+1y_3=3$. $-1/3+55/18+y_3=3$. $y_3=5/18$.
+\\~\\$\mathbf{y}=\left[\begin{array}{l}{1} \\ {5} \\ {5/18}\end{array}\right]$. $U\bfx=\mathbf{y}$. $\left[\begin{array}{ccc}{3} & {5} & {2} \\ {0} & {6} & {-1} \\ {0} & {0} & {49/18}\end{array}\right]\left[\begin{array}{l}{x_{1}} \\ {x_{2}} \\ {x_{3}}\end{array}\right]=\left[\begin{array}{l}{1} \\ {5} \\ {5/18}\end{array}\right]$
+\\~\\$49/18x_3=5/18$. $x_3=5/49$
+\\$6x_2-1x_3=5$. $6x_2-5/49=5$. $6x_2=250/49$. $x_2=250/294=125/147$.
+\\$3x_1+5x_2+2x_3=1$. $3x_1+5(125/147)+2(5/49)=1$. $3x_1+625/147+10/49=1$. $3x_1=-508/147$. $x_1=-508/441$.
+\\$\mathbf{x}=\left[\begin{array}{l}{-508/441} \\ {125/147} \\ {5/49}\end{array}\right]$
+
+%% -------------- Problem ------------------
+\newpage
+\subsection*{Problem 8. (10 points)} Use the normal equations to solve the least squares problem $x^*=$ argmin$\|\bfb-A\bfx\|_2$ where $A=\left[\begin{array}{cc}{1} & {5} \\ {-3} & {2} \\ {4} & {-7}\end{array}\right]$ and $\mathbf{b}=\left[\begin{array}{c}{4} \\ {-3} \\ {2}\end{array}\right]$
+
+\bigskip
+\noindent\textbf{Answer:} Through derivation, we know that the normal equation is as follows:
+\\$\bfx^*=\left(A^TA\right)^{-1}A^T\bfb$
+\\~\\$A^T=\left[\begin{array}{ccc}{1} & {-3} & {4} \\ {5} & {2} & {-7}\end{array}\right]$
+\\~\\$A^TA=\left[\begin{array}{ccc}{1} & {-3} & {4} \\ {5} & {2} & {-7}\end{array}\right]\left[\begin{array}{cc}{1} & {5} \\ {-3} & {2} \\ {4} & {-7}\end{array}\right]=\left[\begin{array}{cc}{26} & {-29} \\ {-29} & {78}\end{array}\right]$
+\\~\\$\left(A^TA\right)^{-1}=\left[\begin{array}{cc}{26} & {-29} \\ {-29} & {78}\end{array}\right]^{-1}=\left[\begin{array}{cc}{78/1187} & {29/1187} \\ {29/1187} & {26/1187}\end{array}\right]$
+\\~\\$\left(A^TA\right)^{-1}A^T=\left[\begin{array}{cc}{78/1187} & {29/1187} \\ {29/1187} & {26/1187}\end{array}\right]\left[\begin{array}{ccc}{1} & {-3} & {4} \\ {5} & {2} & {-7}\end{array}\right]=\left[\begin{array}{ccc}{223/1187} & {-176/1187} & {109/1187} \\ {159/1187} & {-35/1187} & {-66/1187}\end{array}\right]$
+\\~\\$\left(A^TA\right)^{-1}A^T\bfb=\left[\begin{array}{ccc}{223/1187} & {-176/1187} & {109/1187} \\ {159/1187} & {-35/1187} & {-66/1187}\end{array}\right]\left[\begin{array}{c}{4} \\ {-3} \\ {2}\end{array}\right]=\left[\begin{array}{c}{1638/1187} \\ {609/1187}\end{array}\right]=\bfx^*$
+
+
+
+
+\end{document}

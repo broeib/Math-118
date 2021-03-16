@@ -1,0 +1,94 @@
+\documentclass[12pt]{article}
+%% make references and citations clickable
+\usepackage[backref,colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue, pdfborder={0 0 0}]{hyperref}
+
+%% set the paper geometry
+\usepackage[left=1in,top=1in,right=1in,bottom=1in,letterpaper]{geometry}
+
+%% uncomment the next line if you need to present an algorithm
+%\usepackage{algorithm,algorithmic}
+
+%% standard AMS stuff
+\usepackage{amssymb,amsmath,amsthm}
+
+%% for including urls by \url{url text}
+\usepackage{url}
+
+%% Some useful shorthand commands
+\newcommand{\bfx}{{\bf x}}
+\newcommand{\bfb}{{\bf b}}
+\newcommand{\bfu}{{\bf u}}
+\newcommand{\bfv}{{\bf v}}
+\newcommand{\bfw}{{\bf w}}
+
+%% Define Q.E.D. symbol
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\begin{document}
+%% -------------- Problem ------------------
+\newpage
+\subsection*{Problem 7} Let $\mathcal{G}$ be a $2\times 2\times 2$ tensor with slices:
+\\~\\$\mathcal{G}(:,:, 1)=\left[\begin{array}{cc}{1} & {2} \\ {-2} & {1}\end{array}\right] \quad \mathcal{G}(:,:, 2)=\left[\begin{array}{cc}{-2} & {1} \\ {1} & {2}\end{array}\right]$
+\\~\\Furthermore, let: $A=\left[\begin{array}{ll}{1} & {4} \\ {2} & {5} \\ {3} & {6}\end{array}\right] \quad B=\left[\begin{array}{cc}{-2} & {2} \\ {3} & {-3} \\ {-4} & {-4}\end{array}\right] \quad \text { and } C=\left[\begin{array}{cc}{1} & {0} \\ {0} & {-1}\end{array}\right]$
+\\~\\Calculate $\mathcal{G} \times_{1} A \times_{2} B \times_{3} C$
+
+\bigskip
+\noindent\textbf{Answer:} $\mathcal{G} \times_{1} A\in\mathbb{R}^{3\times 2\times 2}$. 
+\\~\\$\left(\mathcal{G} \times_{1} A\right)_{111}=a_{11}\mathcal{G}_{111}+a_{12}\mathcal{G}_{211}=1(1)+4(-2)=-7$
+\\~\\$\left(\mathcal{G} \times_{1} A\right)_{112}=a_{11}\mathcal{G}_{112}+a_{12}\mathcal{G}_{212}=1(-2)+4(1)=2$
+\\~\\$\left(\mathcal{G} \times_{1} A\right)_{121}=a_{11}\mathcal{G}_{121}+a_{12}\mathcal{G}_{221}=1(2)+4(1)=6$
+\\~\\$\left(\mathcal{G} \times_{1} A\right)_{122}=a_{11}\mathcal{G}_{122}+a_{12}\mathcal{G}_{222}=1(1)+4(2)=9$
+\\~\\$\left(\mathcal{G} \times_{1} A\right)_{211}=a_{21}\mathcal{G}_{111}+a_{22}\mathcal{G}_{211}=2(1)+5(-2)=-8$
+\\~\\$\left(\mathcal{G} \times_{1} A\right)_{212}=a_{21}\mathcal{G}_{112}+a_{22}\mathcal{G}_{212}=2(-2)+5(1)=1$
+\\~\\$\left(\mathcal{G} \times_{1} A\right)_{221}=a_{21}\mathcal{G}_{121}+a_{22}\mathcal{G}_{221}=2(2)+5(1)=9$
+\\~\\$\left(\mathcal{G} \times_{1} A\right)_{222}=a_{21}\mathcal{G}_{122}+a_{22}\mathcal{G}_{222}=2(1)+5(2)=12$
+\\~\\$\left(\mathcal{G} \times_{1} A\right)_{311}=a_{31}\mathcal{G}_{111}+a_{32}\mathcal{G}_{211}=3(1)+6(-2)=-9$
+\\~\\$\left(\mathcal{G} \times_{1} A\right)_{312}=a_{31}\mathcal{G}_{112}+a_{32}\mathcal{G}_{212}=3(-2)+6(1)=0$
+\\~\\$\left(\mathcal{G} \times_{1} A\right)_{321}=a_{31}\mathcal{G}_{121}+a_{32}\mathcal{G}_{221}=3(2)+6(1)=12$
+\\~\\$\left(\mathcal{G} \times_{1} A\right)_{322}=a_{31}\mathcal{G}_{122}+a_{32}\mathcal{G}_{222}=3(1)+6(2)=15$
+\\~\\Let $\mathcal{P}=\left(\mathcal{G} \times_{1} A\right)$. Then $\mathcal{P}\left(:, :, 1\right)=\left[\begin{array}{cc}{-7} & {6} \\ {-8} & {9} \\ {-9} & {12}\end{array}\right]$ and $\mathcal{P}\left(:, :, 2\right)=\left[\begin{array}{cc}{2} & {9} \\ {1} & {12} \\ {0} & {15}\end{array}\right]$ 
+\\~\\Next, we solve $\mathcal{P} \times_2 B\in\mathbb{R}^{3\times 3\times 2}$. Recall that $B=\left[\begin{array}{cc}{-2} & {2} \\ {3} & {-3} \\ {-4} & {-4}\end{array}\right]$ 
+\\~\\Also recall that $\displaystyle\left(\mathcal{P} \times_{2} B\right)_{i j h}=\sum_{s=1}^{m} b_{j s} p_{i s h}$
+\\~\\~\\~\\~\\$\left(\mathcal{P} \times_2 B\right)_{111}=b_{11}p_{111}+b_{12}p_{121}=(-2)(-7)+(2)(6)=26$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{112}=b_{11}p_{112}+b_{12}p_{122}=(-2)(2)+(2)(9)=14$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{121}=b_{21}p_{111}+b_{22}p_{121}=(3)(-7)+(-3)(6)=-39$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{122}=b_{21}p_{112}+b_{22}p_{122}=(3)(2)+(-3)(9)=-21$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{131}=b_{31}p_{111}+b_{32}p_{121}=(-4)(-7)+(-4)(6)=4$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{132}=b_{31}p_{112}+b_{32}p_{122}=(-4)(2)+(-4)(9)=-44$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{211}=b_{11}p_{211}+b_{12}p_{221}=(-2)(-8)+(2)(9)=34$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{212}=b_{11}p_{212}+b_{12}p_{222}=(-2)(1)+(2)(12)=22$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{221}=b_{21}p_{211}+b_{22}p_{221}=(3)(-8)+(-3)(9)=-51$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{222}=b_{21}p_{212}+b_{22}p_{222}=(3)(1)+(-3)(12)=-33$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{231}=b_{31}p_{211}+b_{32}p_{221}=(-4)(-8)+(-4)(9)=-4$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{232}=b_{31}p_{212}+b_{32}p_{222}=(-4)(1)+(-4)(12)=-52$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{311}=b_{11}p_{311}+b_{12}p_{321}=(-2)(-9)+(2)(12)=42$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{312}=b_{11}p_{312}+b_{12}p_{322}=(-2)(0)+(2)(15)=30$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{321}=b_{21}p_{311}+b_{22}p_{321}=(3)(-9)+(-3)(12)=-63$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{322}=b_{21}p_{312}+b_{22}p_{322}=(3)(0)+(-3)(15)=-45$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{331}=b_{31}p_{311}+b_{32}p_{321}=(-4)(-9)+(-4)(12)=-12$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{332}=b_{31}p_{312}+b_{32}p_{322}=(-4)(0)+(-4)(15)=-60$
+\\~\\Let $\mathcal{Q}=\left(\mathcal{P} \times_{2} B\right)$. Then $\mathcal{Q}\left(:, :, 1\right)=\left[\begin{array}{ccc}{26} & {-39} & {4} \\ {34} & {-51} & {-4} \\ {42} & {-63} & {-12}\end{array}\right]$ and $\mathcal{Q}\left(:, :, 2\right)=\left[\begin{array}{ccc}{14} & {-21} & {-44} \\ {22} & {-33} & {-52} \\ {30} & {-45} & {-60}\end{array}\right]$
+\\~\\Finally, we must compute $\mathcal{Q} \times_{3} C\in\mathbb{R}^{3\times 3\times 2}$. Recall that $C=\left[\begin{array}{cc}{1} & {0} \\ {0} & {-1}\end{array}\right]$. 
+\\~\\Also recall that $\displaystyle\left(\mathcal{Q} \times_{3} C\right)_{i j h}=\sum_{s=1}^{m} c_{h s} q_{i j s}$.
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{111}=c_{11}q_{111}+c_{12}q_{112}=(2)(26)+(0)(14)=52$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{112}=c_{21}q_{111}+c_{22}q_{112}=(0)(26)+(-1)(14)=-14$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{121}=c_{11}q_{121}+c_{12}q_{122}=(2)(-39)+(0)(-21)=-78$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{122}=c_{21}q_{121}+c_{22}q_{122}=(0)(-39)+(-1)(-21)=21$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{131}=c_{11}q_{131}+c_{12}q_{132}=(2)(4)+(0)(-44)=8$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{132}=c_{21}q_{131}+c_{22}q_{132}=(0)(4)+(-1)(-44)=44$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{211}=c_{11}q_{211}+c_{12}q_{212}=(2)(34)+(0)(22)=68$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{212}=c_{21}q_{211}+c_{22}q_{212}=(0)(34)+(-1)(22)=-22$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{221}=c_{11}q_{221}+c_{12}q_{222}=(2)(-51)+(0)(-33)=-102$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{222}=c_{21}q_{221}+c_{22}q_{222}=(0)(-51)+(-1)(-33)=33$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{231}=c_{11}q_{231}+c_{12}q_{232}=(2)(-4)+(0)(-52)=-8$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{232}=c_{21}q_{231}+c_{22}q_{232}=(0)(-4)+(-1)(-52)=52$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{311}=c_{11}q_{311}+c_{12}q_{312}=(2)(42)+(0)(30)=84$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{312}=c_{21}q_{311}+c_{22}q_{312}=(0)(42)+(-1)(30)=-30$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{321}=c_{11}q_{321}+c_{12}q_{322}=(2)(-63)+(0)(-45)=-126$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{322}=c_{21}q_{331}+c_{22}q_{332}=(0)(-63)+(-1)(-45)=45$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{331}=c_{11}q_{331}+c_{12}q_{332}=(2)(-12)+(0)(-60)=-24$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{332}=c_{21}q_{331}+c_{22}q_{332}=(0)(-12)+(-1)(-60)=60$
+\\~\\Let $\mathcal{R}=\left(\mathcal{Q} \times_{3} C\right)$. Then $\mathcal{R}\left(:, :, 1\right)=\left[\begin{array}{ccc}{52} & {-78} & {8} \\ {68} & {-102} & {-8} \\ {84} & {-126} & {-24}\end{array}\right]$ and $\mathcal{R}\left(:, :, 2\right)=\left[\begin{array}{ccc}{-14} & {21} & {44} \\ {-22} & {33} & {52} \\ {-30} & {45} & {60}\end{array}\right]$
+Finally, we can conclude that $\mathcal{G} \times_{1} A \times_{2} B \times_{3} C=\mathcal{R}$ which is defined above.
+
+\end{document}

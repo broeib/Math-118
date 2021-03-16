@@ -1,0 +1,47 @@
+\documentclass[12pt]{article}
+%% make references and citations clickable
+\usepackage[backref,colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue, pdfborder={0 0 0}]{hyperref}
+
+%% set the paper geometry
+\usepackage[left=1in,top=1in,right=1in,bottom=1in,letterpaper]{geometry}
+
+%% uncomment the next line if you need to present an algorithm
+%\usepackage{algorithm,algorithmic}
+
+%% standard AMS stuff
+\usepackage{amssymb,amsmath,amsthm}
+
+%% for including urls by \url{url text}
+\usepackage{url}
+
+%% Some useful shorthand commands
+\newcommand{\bfx}{{\bf x}}
+\newcommand{\bfb}{{\bf b}}
+\newcommand{\bfu}{{\bf u}}
+\newcommand{\bfv}{{\bf v}}
+\newcommand{\bfw}{{\bf w}}
+
+%% Define Q.E.D. symbol
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\begin{document}
+
+%% -------------- Problem ------------------
+\newpage
+\subsection*{Problem 6. (10 points)} Suppose that $A \in \mathbb{R}^{m \times n}$, $\mathbf{b} \in \mathbb{R}^{m}$ and $\mathbf{x} \in \mathbb{R}^{n} $. 
+\\Let $f(\mathbf{x})=\|\mathbf{b}-A \mathbf{x}\|_{2}^{2}$. Show that $\nabla f(\mathbf{x})=2 A^{\top}(A \mathbf{x}-\mathbf{b})$
+
+\bigskip
+\noindent\textbf{Answer:} $\displaystyle A\bfx=\left[\begin{array}{c}{\sum_{j} a_{1j}\bfx_j} \\ {\sum_{j} a_{2j}\bfx_j} \\ {\vdots} \\ {\sum_{j} a_{nj}\bfx_j}\end{array}\right]$. $\displaystyle A\bfx - \bfb=\left[\begin{array}{c}{\sum_{j} a_{1j}\bfx_j-\bfb_j} \\ {\sum_{j} a_{2j}\bfx_j-\bfb_j} \\ {\vdots} \\ {\sum_{j} a_{nj}\bfx_j-\bfb_j}\end{array}\right]$ or $\sum_{i} \left(\sum_{j} a_{ij}\bfx_j-\bfb_j\right)$.
+\\~\\$\|A\bfx - \bfb\|_2^2=\sum_{i} \left(\sum_{j} a_{ij}\bfx_j-\bfb_j\right)^2$.
+\\~\\~\\$\nabla f(\bfx)=\left[\begin{array}{c}{\frac{\partial}{\partial x_1}} \\ {\frac{\partial}{\partial x_2}} \\ {\vdots} \\ {\frac{\partial}{\partial x_n}}\end{array}\right]$
+\\~\\Lets take the derivative with respect to some element $\bfx_k$ where $1\leq k\leq n$.
+\\~\\$\frac{\partial}{\partial x_k}\|A\bfx - \bfb\|_2^2=\frac{\partial}{\partial x_k}\sum_{i} \left(\sum_{j} a_{ij}\bfx_j-\bfb_j\right)^2=\sum_{i} \frac{\partial}{\partial x_k}\left(\sum_{j} a_{ij}\bfx_j-\bfb_j\right)^2$.
+\\~\\Using the chain rule, we can continue: $\sum_{i} 2\left(\sum_{j} a_{ij}\bfx_j-\bfb_j\right)\frac{\partial}{\partial x_k}\left(\sum_{j} a_{ij}\bfx_j-\bfb_j\right)$.
+\\~\\Solving $\frac{\partial}{\partial x_k}\left(\sum_{j} a_{ij}\bfx_j-\bfb_j\right)$ alone, we can see that the derivative will be zero for every value of $j\neq k$, so we can rewrite this as: $\frac{\partial}{\partial x_k}\left(a_{ik}\bfx_k-\bfb_k\right)=a_{ik}$.
+\\~\\$=\sum_{i} 2a_{ik}\left(\sum_{j} a_{ij}\bfx_j-\bfb_j\right)=2\sum_{i}(A\bfx-\bfb)_ia_{ik}=2A_k^T(A\bfx-\bfb)$.
+\\~\\Up to now, we have shown that $\frac{\partial}{\partial x_k}\|A\bfx - \bfb\|_2^2=2A_k^T(A\bfx-\bfb)$, but we would like to show this for all values of k so that we get $\nabla f(\bfx)$. Lets rewrite it below:
+\\~\\$\nabla f(\bfx)=\left[\begin{array}{c}{\frac{\partial}{\partial x_1}} \\ {\frac{\partial}{\partial x_2}} \\ {\vdots} \\ {\frac{\partial}{\partial x_n}}\end{array}\right]=\left[\begin{array}{c}{2A_1^T(A\bfx-\bfb)} \\ {2A_2^T(A\bfx-\bfb)} \\ {\vdots} \\ {2A_n^T(A\bfx-\bfb)}\end{array}\right]=2\left[\begin{array}{c}{A_1^T} \\ {A_2^T} \\ {\vdots} \\ {A_n^T}\end{array}\right](A\bfx-\bfb)=2A^T(A\bfx-\bfb)$.
+\\~\\Thus, we have shown the desired equality. \qedsymbol
+
+\end{document}

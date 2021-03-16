@@ -1,0 +1,192 @@
+\documentclass[12pt]{article}
+%% make references and citations clickable
+\usepackage[backref,colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue, pdfborder={0 0 0}]{hyperref}
+
+%% set the paper geometry
+\usepackage[left=1in,top=1in,right=1in,bottom=1in,letterpaper]{geometry}
+
+%% uncomment the next line if you need to present an algorithm
+%\usepackage{algorithm,algorithmic}
+
+%% standard AMS stuff
+\usepackage{amssymb,amsmath,amsthm}
+
+%% for including urls by \url{url text}
+\usepackage{url}
+
+%% Some useful shorthand commands
+\newcommand{\bfx}{{\bf x}}
+\newcommand{\bfb}{{\bf b}}
+\newcommand{\bfu}{{\bf u}}
+\newcommand{\bfv}{{\bf v}}
+\newcommand{\bfw}{{\bf w}}
+
+%% Define Q.E.D. symbol
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\begin{document}
+%% -------------- Problem ------------------
+\newpage
+\subsection*{Problem 1} Verify that the following matrices are orthogonal. {\em Note there may be a little bit of rounding error.} \\
+$$
+Q_1 = \left[\begin{matrix} 0.1817 & 0.7236 & 0.6658 \\ 0.6198 & -0.61 & 0.4938 \\ -0.7634 & -0.3230 & 0.5594 \end{matrix}\right] \quad Q_2 = \left[\begin{matrix} 0.6404 & 0.3577 & -0.6797 \\ -0.3121 & 0.9298 & 0.1952 \\ 0.7010 & 0.0872 & 0.7071 \end{matrix}\right]
+$$
+
+\bigskip
+\noindent\textbf{Answer:} $Q_1$: First, we verify that every vector in the matrix has a $\|\cdot\|_2$ of 1.
+\\~\\$col_1\left(Q_1\right)=\left[\begin{array}{c}{0.1817} \\ {0.6198} \\ {-0.7634}\end{array}\right]$. $\|col_1\left(Q_1\right)\|_2=\sqrt{|0.1817|^2+|0.6198|^2+|-0.7634|^2}\approx 1$
+\\~\\$col_2\left(Q_1\right)=\left[\begin{array}{c}{0.7236} \\ {-0.61} \\ {-0.3230}\end{array}\right]$. $\|col_2\left(Q_1\right)\|_2=\sqrt{|0.7236|^2+|-0.61|^2+|-0.3230|^2}\approx 1$
+\\~\\$col_3\left(Q_1\right)=\left[\begin{array}{c}{0.6658} \\ {0.4938} \\ {0.5594}\end{array}\right]$. $\|col_3\left(Q_1\right)\|_2=\sqrt{|0.6658|^2+|0.4938|^2+|0.5594|^2}\approx 1$
+\\~\\Then we check that $\langle col_1\left(Q_1\right), col_2\left(Q_1\right)\rangle=\langle col_2\left(Q_1\right), col_3\left(Q_1\right)\rangle=\langle col_1\left(Q_1\right), col_3\left(Q_1\right)\rangle=0$
+\\~\\$\langle col_1\left(Q_1\right), col_2\left(Q_1\right)\rangle=(0.1817*0.7236)+(0.6198*-0.61)+(-0.7634*-0.3230)\approx 0$
+\\~\\$\langle col_2\left(Q_1\right), col_3\left(Q_1\right)\rangle=(0.7236*0.6658)+(-0.61*0.4938)+(-0.3230*0.5594)\approx 0$
+\\~\\$\langle col_1\left(Q_1\right), col_3\left(Q_1\right)\rangle=(0.1817*0.6658)+(0.6198*0.4938)+(-0.7634*0.5594)\approx 0$
+\\~\\Therefore, $Q_1$ has all orthonormal columns and is therefore by definition an orthogonal matrix. We can confirm this by doing: 
+\\~\\$Q_1Q_1^T=\left[\begin{matrix} 0.1817 & 0.7236 & 0.6658 \\ 0.6198 & -0.61 & 0.4938 \\ -0.7634 & -0.3230 & 0.5594 \end{matrix}\right]\left[\begin{matrix} 0.1817 & 0.6198 & -0.7634 \\ 0.7236 & -0.61 & -0.3230 \\ 0.6658 & 0.4938 & 0.5594 \end{matrix}\right]\approx \left[\begin{matrix} 0 & 1 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{matrix}\right]$
+
+\newpage
+\subsection*{Problem 1 cont.}
+\bigskip
+\noindent\textbf{Answer:} $Q_2 = \left[\begin{matrix} 0.6404 & 0.3577 & -0.6797 \\ -0.3121 & 0.9298 & 0.1952 \\ 0.7010 & 0.0872 & 0.7071 \end{matrix}\right]$
+\\~\\~\\$col_1\left(Q_2\right)=\left[\begin{array}{c}{0.6404} \\ {-0.3121} \\ {0.7010}\end{array}\right]$. $\|col_1\left(Q_1\right)\|_2=\sqrt{|0.6404|^2+|-0.3121|^2+|0.7010|^2}\approx 1$
+\\~\\$col_2\left(Q_1\right)=\left[\begin{array}{c}{0.3577} \\ {0.9298} \\ {0.0872}\end{array}\right]$. $\|col_2\left(Q_1\right)\|_2=\sqrt{|0.3577|^2+|0.9298|^2+|0.0872|^2}\approx 1$
+\\~\\$col_3\left(Q_1\right)=\left[\begin{array}{c}{-0.6797} \\ {0.1952} \\ {0.7071}\end{array}\right]$. $\|col_3\left(Q_1\right)\|_2=\sqrt{|-0.6797|^2+|0.1952|^2+|0.7071|^2}\approx 1$ 
+\\~\\~\\$\langle col_1\left(Q_2\right), col_2\left(Q_2\right)\rangle=(0.6406*0.3577)+(-0.3121*0.9298)+(0.7010*0.0872)\approx 0$
+\\~\\$\langle col_2\left(Q_2\right), col_3\left(Q_2\right)\rangle=(0.3577*-0.6797)+(0.9298*0.1952)+(0.0872*0.7071)\approx 0$
+\\~\\$\langle col_1\left(Q_2\right), col_3\left(Q_2\right)\rangle=(0.6404*-0.6797)+(-0.3121*0.1952)+(0.7010*0.7071)\approx 0$
+\\~\\Therefore, $Q_2$ has all orthonormal columns and is therefore by definition an orthogonal matrix. We can confirm this by doing: 
+\\~\\$Q_2Q_2^T=\left[\begin{matrix} 0.6404 & 0.3577 & -0.6797 \\ -0.3121 & 0.9298 & 0.1952 \\ 0.7010 & 0.0872 & 0.7071 \end{matrix}\right]\left[\begin{matrix} 0.6404 & -0.3121 & 0.7010 \\ 0.3577 & 0.9298 & 0.0872 \\ -0.6797 & 0.1952 & 0.7071 \end{matrix}\right]\approx \left[\begin{matrix} 0 & 1 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{matrix}\right]$
+
+%% -------------- Problem ------------------
+\newpage
+\subsection*{Problem 2} Consider the least squares problem $\mathbf{x}^{*}=\operatorname{argmin}_{\mathbf{x} \in \mathbb{R}^{4}}\|A \mathbf{x}-\mathbf{b}\|_{2}$ where $A$ and $\bfb$ are given. Find $\bfx^{*}$ using the QR decomposition method where $Q$ and $R$ are also given below:
+\\~\\$A=\left[\begin{array}{cccc}{0.7922} & {0.6787} & {0.7060} & {0.6948} \\ {0.9595} & {0.7577} & {0.0318} & {0.3171} \\ {0.6557} & {0.7431} & {0.2769} & {0.9502} \\ {0.0357} & {0.3922} & {0.0462} & {0.0344} \\ {0.8491} & {0.6555} & {0.0971} & {0.4387} \\ {0.9340} & {0.1712} & {0.8235} & {0.3816}\end{array}\right]$, $\mathbf{b}=\left[\begin{array}{l}{0.7655} \\ {0.7952} \\ {0.1869} \\ {0.4898} \\ {0.4456} \\ {0.6463}\end{array}\right]$
+\\~\\$Q=\left[\begin{array}{cccccc}{-0.4191} & {-0.1861} & {-0.5979} & {-0.1311} & {-0.2584} & {-0.5901} \\ {-0.5076} & {-0.1321} & {0.5495} & {-0.3017} & {-0.5548} & {0.1553} \\ {-0.3469} & {-0.4172} & {-0.1468} & {0.7373} & {-0.0250} & {0.3739} \\ {-0.0189} & {-0.5331} & {-0.2732} & {-0.5822} & {0.3160} & {0.4494} \\ {-0.4492} & {-0.0950} & {0.3924} & {0.0215} & {0.7089} & {-0.3637} \\ {-0.4941} & {0.6933} & {-0.3005} & {-0.0938} & {0.1500} & {0.3919}\end{array}\right]$
+\\~\\$R_{1}=\left[\begin{array}{rrrr}{-1.8902} & {-1.3134} & {-0.8595} & {-1.1681} \\ {0} & {-0.6892} & {0.2859} & {-0.3632} \\ {0} & {0} & {-0.6673} & {-0.3327} \\ {0} & {0} & {0} & {0.4674}\end{array}\right]$
+\\~\\$R=\left[\begin{array}{rrrr}{-1.8902} & {-1.3134} & {-0.8595} & {-1.1681} \\ {0} & {-0.6892} & {0.2859} & {-0.3632} \\ {0} & {0} & {-0.6673} & {-0.3327} \\ {0} & {0} & {0} & {0.4674} \\ {0} & {0} & {0} & {0} \\ {0} & {0} & {0} & {0}\end{array}\right]$
+\\~\\where $A\in\mathbb{R}^{m\times n}$, $b\in\mathbb{R}^{m}$, $Q\in\mathbb{R}^{m\times m}$, $R\in\mathbb{R}^{m\times n}$, $R_1\in\mathbb{R}^{n\times n} (m=6, n=4)$.
+
+\bigskip
+\noindent\textbf{Answer:} Through derivation, we know that $\|A \mathbf{x}-\mathbf{b}\|_{2}=\|R\bfx -Q^{\top}\bfb\|_2$. From here, we can solve for $\bfx$ with a few steps:
+\\~\\$Q^{\top}=\left[\begin{array}{cccccc}{-0.4191} & {-0.5076} & {-0.3469} & {-0.0189} & {-0.4492} & {-0.4941} \\ {-0.1861} & {-0.1321} & {-0.4172} & {-0.5331} & {-0.0950} & {0.6933} \\ {-0.5979} & {0.5495} & {-0.1468} & {-0.2732} & {0.3924} & {-0.3005} \\ {-0.1311} & {-0.3017} & {0.7373} & {-0.5822} & {0.0215} & {-0.0938} \\ {-0.2584} & {-0.5548} & {-0.0250} & {0.3160} & {0.7089} & {0.1500} \\ {-0.5901} & {0.1553} & {0.3739} & {0.4494} & {-0.3637} & {0.3919}\end{array}\right], \mathbf{x}=\left[\begin{array}{l}{x_1} \\ {x_2} \\ {x_3} \\ {x_4}\end{array}\right]$
+\\~\\We can minimize by setting $R\bfx=Q^{\top}\bfb$, and the $\bfx$ that minimizes this is $\bfx^{*}$.
+\\~\\$R\bfx=\left[\begin{array}{l}{(-1.8902)x_1+(-1.3134)x_2+(-0.8595)x_3+(-1.1681)x_4} \\ {(0)x_1+(-0.6892)x_2+(0.2859)x_3+(-0.3632)x_4} \\ {(0)x_1+(0)x_2+(-0.6673)x_3+(-0.3327)x_4} \\ {(0)x_1+(0)x_2+(0)x_3+(0.4647)x_4} \\ {(0)x_1+(0)x_2+(0)x_3+(0)x_4} \\ {(0)x_1+(0)x_2+(0)x_3+(0)x_4}\end{array}\right]$
+\\~\\$=\left[\begin{array}{l}{(-1.8902)x_1+(-1.3134)x_2+(-0.8595)x_3+(-1.1681)x_4} \\ {(-0.6892)x_2+0.2859x_3+(-0.3632)x_4} \\ {(-0.6673)x_3+(-0.3327)x_4} \\ {0.4647x_4} \\ {0} \\ {0}\end{array}\right]$
+\\~\\$Q^{\top}\bfb=\left[\begin{array}{cccccc}{-0.4191} & {-0.5076} & {-0.3469} & {-0.0189} & {-0.4492} & {-0.4941} \\ {-0.1861} & {-0.1321} & {-0.4172} & {-0.5331} & {-0.0950} & {0.6933} \\ {-0.5979} & {0.5495} & {-0.1468} & {-0.2732} & {0.3924} & {-0.3005} \\ {-0.1311} & {-0.3017} & {0.7373} & {-0.5822} & {0.0215} & {-0.0938} \\ {-0.2584} & {-0.5548} & {-0.0250} & {0.3160} & {0.7089} & {0.1500} \\ {-0.5901} & {0.1553} & {0.3739} & {0.4494} & {-0.3637} & {0.3919}\end{array}\right]\left[\begin{array}{l}{0.7655} \\ {0.7952} \\ {0.1869} \\ {0.4898} \\ {0.4456} \\ {0.6463}\end{array}\right]$
+\\~\\$=\left[\begin{array}{l}{-1.31805775} \\ {-0.1808447} \\ {-0.20134004} \\ {-0.53867162} \\ {-0.07604702} \\ {0.05299129}\end{array}\right]$. Therefore, to solve for $\bfx^{*}$, we can solve for $x_1$, $x_2$, $x_3$, and $x_4$:
+\\~\\$\left[\begin{array}{l}{(-1.8902)x_1+(-1.3134)x_2+(-0.8595)x_3+(-1.1681)x_4} \\ {(-0.6892)x_2+0.2859x_3+(-0.3632)x_4} \\ {(-0.6673)x_3+(-0.3327)x_4} \\ {0.4647x_4} \\ {0} \\ {0}\end{array}\right]=\left[\begin{array}{l}{-1.31805775} \\ {-0.1808447} \\ {-0.20134004} \\ {-0.53867162} \\ {-0.07604702} \\ {0.05299129}\end{array}\right]$
+\\~\\$0.4647x_4=-0.53867162\implies x_4=-1.1591814504$.
+\\~\\$(-0.6673)x_3+(-0.3327)x_4=-0.20134004\implies (-0.6673)x_3+0.3856596685=-0.20134004\implies (-0.6673)x_3=-0.5869997085\implies x_3=0.8796638821$
+\\~\\$(-0.6892)x_2+0.2859x_3+(-0.3632)x_4=-0.1808447\implies (-0.6892)x_2+0.2859(0.8796638821)+(-0.3632)(-1.1591814504)=-0.1808447\implies (-0.6892)x_2+0.6725106067=-0.1808447\implies (-0.6892)x_2=-0.8533553067\implies x_2=1.2381823951$ 
+\\~\\$(-1.8902)x_1+(-1.3134)x_2+(-0.8595)x_3+(-1.1681)x_4=-1.31805775\implies (-1.8902)x_1+(-1.3134)(1.2381823951)+(-0.8595)(0.8796638821)+(-1.1681)(-1.1591814504)=-1.31805775\implies (-1.8902)x_1-1.0282600122=-1.31805775\implies (-1.8902)x_1=-0.2897977378\implies x_1=0.1533159125$
+\\~\\Therefore, $\bfx^{*}=\left[\begin{array}{l}{0.1533159125} \\ {1.2381823951} \\ {0.8796638821} \\ {-1.1591814504}\end{array}\right]$. After this, I verified my solution using numpy and the result was very similar, with only slight differences due to rounding.
+
+%% -------------- Problem ------------------
+\newpage
+\subsection*{Problem 4} Prove that if $Q_1$ and $Q_2$ are orthogonal then so is $Q_1Q_2$. Hint: There are multiple ways to show this. \textit{You may want to prove that all the columns of the new matrix $Q_1Q_2$ are orthonormal. Or you may want to show that $(Q_1Q_2)^{-1}$ = $(Q_1Q_2)^{\top}$.} 
+
+\bigskip
+\noindent\textbf{Answer:} By definition, $(Q_1Q_2)$ is orthogonal $\iff (Q_1Q_2)(Q_1Q_2)^{\top}=I$
+\\~\\$(Q_1Q_2)(Q_1Q_2)^{\top}=(Q_1Q_2Q_2^{\top}Q_1^{\top})$
+\\~\\Since $Q_2$ is orthogonal (from problem statement), $Q_2Q_2^{\top}=I$
+\\~\\Then $(Q_1Q_2Q_2^{\top}Q_1^{\top})$ simplifies to $(Q_1IQ_1^{\top})=(Q_1Q_1^{\top})$
+\\~\\Since $Q_1$ is orthogonal (from problem statement), $Q_1Q_1^{\top}=I$
+\\~\\By chain of equivalency, we have shown that $(Q_1Q_2)(Q_1Q_2)^{\top}=I$, and therefore $(Q_1Q_2)$ is orthogonal. \qedsymbol
+
+%% -------------- Problem ------------------
+\newpage
+\subsection*{Problem 5} For all parts of this question, let $A=\left[\begin{array}{lll}{3} & {3} & {1} \\ {3} & {2} & {2} \\ {1} & {2} & {3}\end{array}\right]$ \textbf{(a)} Find the eigenvalues \textbf{(b)} Use the answer in \textbf{(a)} to compute $\|A\|_2$
+
+\bigskip
+\noindent\textbf{Answer:}
+\\~\\\textbf{(a)} In order to find the eigenvalues, we need to find all the values $\lambda$ where $det(A-\lambda I_n)=0$.
+\\~\\$A-\lambda I_n=\left[\begin{array}{lll}{3-\lambda} & {3} & {1} \\ {3} & {2-\lambda} & {2} \\ {1} & {2} & {3-\lambda}\end{array}\right]$
+\\~\\$\chi=det(A-\lambda I_n)=(3-\lambda)\left(det\left[\begin{array}{ll}{2-\lambda} & {2} \\ {2} & {3-\lambda}\end{array}\right]\right)-3\left(det\left[\begin{array}{ll}{3} & {2} \\ {1} & {3-\lambda}\end{array}\right]\right)+1\left(det\left[\begin{array}{ll}{3} & {2-\lambda} \\ {1} & {2}\end{array}\right]\right)$
+\\~\\$=(3-\lambda)(\lambda^2-5\lambda +2)-3(-3\lambda +7)+1(\lambda +4)$
+\\~\\$=-\lambda^3+8\lambda^2-7\lambda -11$
+\\~\\Now we solve for $\chi=0$: $-\lambda^3+8\lambda^2-8\lambda-4=0$.
+\\~\\Using a computer, the approximate eigenvalues are as follows: $\lambda_1\approx -0.78926\lambda_2\approx 2.07606. \lambda_3\approx\ 6.71319$
+\\~\\\textbf{(b)} We know that $\|A\|_2=\sqrt{\lambda_{max}(A^{\top}A)}$. Now we have to figure out the eigenvalues of $A^{\top}A$. We also know that since $A$ is a symmetric matrix, $A^{\top}=A$. 
+\\~\\Let $\bfv$ be some arbitrary vector. $A\bfv=\lambda\bfv$. Multiplying both sides by $A^{\top}$, we have $A^{\top}A\bfv=A^{\top}\lambda\bfv$. 
+\\~\\Since $A\bfv=\lambda\bfv$ and $A^{\top}=A$, $A^{\top}\bfv=\lambda\bfv$, and $A^{\top}A\bfv=A^{\top}\lambda\bfv$ becomes $A^{\top}A\bfv=\lambda\lambda\bfv=\lambda^2\bfv$. 
+\\~\\This means that the eigenvalues for $A^{\top}A$ are the squares of the eigenvalues of $A$. 
+\\~\\From this, we can show that $\|A\|_2=\sqrt{\lambda_{max}(A^{\top}A)}=\sqrt{\left(\lambda_{max}(A)\right)^2}=\lambda_{max}(A)$. From our previous answer, we know that $\lambda_{max}(A)=\lambda_3\approx 6.71319$.
+Therefore, $\|A\|_2\approx 6.71319$.
+
+%% -------------- Problem ------------------
+\newpage
+\subsection*{Problem 6} Suppose that $\bfu_1,...,\bfu_n$ are orthonormal, and that $\bfv_1,...,\bfv_n$are also orthonormal. Let $\sigma_1>\sigma_2>...>\sigma_r>0$. Show that $A_{r}=\sum_{i=1}^{r} \sigma_{i} \mathbf{u}_{i} \mathbf{v}_{i}^{\top}$ has rank $r$.
+
+\bigskip
+\noindent\textbf{Answer:} We know that $\bfu_i\bfv_i^{\top}\in\mathbb{R}^{m\times n}$ and has a rank of one for all values of $i$. Multiplying the scalar $\sigma_i$ to this matrix does not change the rank.
+\\~\\We repeat this sum $r$ times, with each addition increasing the rank by one each time. This is because $\langle\bfu_i, \bfu_j\rangle=0$ and $\langle\bfv_i, \bfv_j\rangle=0$ for all values of $i\neq j$. Therefore adding $\sigma_{i} \mathbf{u}_{i} \mathbf{v}_{i}^{\top}$ to $\sigma_{j} \mathbf{u}_{j} \mathbf{v}_{j}^{\top}$ gives you a rank one update. Again, the $\sigma_i$ term does not effect the rank.
+\\~\\Since $\sigma_{1i} \mathbf{u}_{1} \mathbf{v}_{1}^{\top}$ has a rank of one and we repeat this sum $r$ times, the rank of $A_r=r$.
+
+%% -------------- Problem ------------------
+\newpage
+\subsection*{Problem 7} Let $\mathcal{G}$ be a $2\times 2\times 2$ tensor with slices:
+\\~\\$\mathcal{G}(:,:, 1)=\left[\begin{array}{cc}{1} & {2} \\ {-2} & {1}\end{array}\right] \quad \mathcal{G}(:,:, 2)=\left[\begin{array}{cc}{-2} & {1} \\ {1} & {2}\end{array}\right]$
+\\~\\Furthermore, let: $A=\left[\begin{array}{ll}{1} & {4} \\ {2} & {5} \\ {3} & {6}\end{array}\right] \quad B=\left[\begin{array}{cc}{-2} & {2} \\ {3} & {-3} \\ {-4} & {-4}\end{array}\right] \quad \text { and } C=\left[\begin{array}{cc}{1} & {0} \\ {0} & {-1}\end{array}\right]$
+\\~\\Calculate $\mathcal{G} \times_{1} A \times_{2} B \times_{3} C$
+
+\bigskip
+\noindent\textbf{Answer:} $\mathcal{G} \times_{1} A\in\mathbb{R}^{3\times 2\times 2}$. 
+\\~\\$\left(\mathcal{G} \times_{1} A\right)_{111}=a_{11}\mathcal{G}_{111}+a_{12}\mathcal{G}_{211}=1(1)+4(-2)=-7$
+\\~\\$\left(\mathcal{G} \times_{1} A\right)_{112}=a_{11}\mathcal{G}_{112}+a_{12}\mathcal{G}_{212}=1(-2)+4(1)=2$
+\\~\\$\left(\mathcal{G} \times_{1} A\right)_{121}=a_{11}\mathcal{G}_{121}+a_{12}\mathcal{G}_{221}=1(2)+4(1)=6$
+\\~\\$\left(\mathcal{G} \times_{1} A\right)_{122}=a_{11}\mathcal{G}_{122}+a_{12}\mathcal{G}_{222}=1(1)+4(2)=9$
+\\~\\$\left(\mathcal{G} \times_{1} A\right)_{211}=a_{21}\mathcal{G}_{111}+a_{22}\mathcal{G}_{211}=2(1)+5(-2)=-8$
+\\~\\$\left(\mathcal{G} \times_{1} A\right)_{212}=a_{21}\mathcal{G}_{112}+a_{22}\mathcal{G}_{212}=2(-2)+5(1)=1$
+\\~\\$\left(\mathcal{G} \times_{1} A\right)_{221}=a_{21}\mathcal{G}_{121}+a_{22}\mathcal{G}_{221}=2(2)+5(1)=9$
+\\~\\$\left(\mathcal{G} \times_{1} A\right)_{222}=a_{21}\mathcal{G}_{122}+a_{22}\mathcal{G}_{222}=2(1)+5(2)=12$
+\\~\\$\left(\mathcal{G} \times_{1} A\right)_{311}=a_{31}\mathcal{G}_{111}+a_{32}\mathcal{G}_{211}=3(1)+6(-2)=-9$
+\\~\\$\left(\mathcal{G} \times_{1} A\right)_{312}=a_{31}\mathcal{G}_{112}+a_{32}\mathcal{G}_{212}=3(-2)+6(1)=0$
+\\~\\$\left(\mathcal{G} \times_{1} A\right)_{321}=a_{31}\mathcal{G}_{121}+a_{32}\mathcal{G}_{221}=3(2)+6(1)=12$
+\\~\\$\left(\mathcal{G} \times_{1} A\right)_{322}=a_{31}\mathcal{G}_{122}+a_{32}\mathcal{G}_{222}=3(1)+6(2)=15$
+\\~\\Let $\mathcal{P}=\left(\mathcal{G} \times_{1} A\right)$. Then $\mathcal{P}\left(:, :, 1\right)=\left[\begin{array}{cc}{-7} & {6} \\ {-8} & {9} \\ {-9} & {12}\end{array}\right]$ and $\mathcal{P}\left(:, :, 2\right)=\left[\begin{array}{cc}{2} & {9} \\ {1} & {12} \\ {0} & {15}\end{array}\right]$ 
+\\~\\Next, we solve $\mathcal{P} \times_2 B\in\mathbb{R}^{3\times 3\times 2}$. Recall that $B=\left[\begin{array}{cc}{-2} & {2} \\ {3} & {-3} \\ {-4} & {-4}\end{array}\right]$ 
+\\~\\Also recall that $\displaystyle\left(\mathcal{P} \times_{2} B\right)_{i j h}=\sum_{s=1}^{m} b_{j s} p_{i s h}$
+\\~\\~\\~\\~\\$\left(\mathcal{P} \times_2 B\right)_{111}=b_{11}p_{111}+b_{12}p_{121}=(-2)(-7)+(2)(6)=26$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{112}=b_{11}p_{112}+b_{12}p_{122}=(-2)(2)+(2)(9)=14$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{121}=b_{21}p_{111}+b_{22}p_{121}=(3)(-7)+(-3)(6)=-39$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{122}=b_{21}p_{112}+b_{22}p_{122}=(3)(2)+(-3)(9)=-21$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{131}=b_{31}p_{111}+b_{32}p_{121}=(-4)(-7)+(-4)(6)=4$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{132}=b_{31}p_{112}+b_{32}p_{122}=(-4)(2)+(-4)(9)=-44$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{211}=b_{11}p_{211}+b_{12}p_{221}=(-2)(-8)+(2)(9)=34$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{212}=b_{11}p_{212}+b_{12}p_{222}=(-2)(1)+(2)(12)=22$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{221}=b_{21}p_{211}+b_{22}p_{221}=(3)(-8)+(-3)(9)=-51$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{222}=b_{21}p_{212}+b_{22}p_{222}=(3)(1)+(-3)(12)=-33$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{231}=b_{31}p_{211}+b_{32}p_{221}=(-4)(-8)+(-4)(9)=-4$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{232}=b_{31}p_{212}+b_{32}p_{222}=(-4)(1)+(-4)(12)=-52$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{311}=b_{11}p_{311}+b_{12}p_{321}=(-2)(-9)+(2)(12)=42$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{312}=b_{11}p_{312}+b_{12}p_{322}=(-2)(0)+(2)(15)=30$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{321}=b_{21}p_{311}+b_{22}p_{321}=(3)(-9)+(-3)(12)=-63$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{322}=b_{21}p_{312}+b_{22}p_{322}=(3)(0)+(-3)(15)=-45$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{331}=b_{31}p_{311}+b_{32}p_{321}=(-4)(-9)+(-4)(12)=-12$
+\\~\\$\left(\mathcal{P} \times_2 B\right)_{332}=b_{31}p_{312}+b_{32}p_{322}=(-4)(0)+(-4)(15)=-60$
+\\~\\Let $\mathcal{Q}=\left(\mathcal{P} \times_{2} B\right)$. Then $\mathcal{Q}\left(:, :, 1\right)=\left[\begin{array}{ccc}{26} & {-39} & {4} \\ {34} & {-51} & {-4} \\ {42} & {-63} & {-12}\end{array}\right]$ and $\mathcal{Q}\left(:, :, 2\right)=\left[\begin{array}{ccc}{14} & {-21} & {-44} \\ {22} & {-33} & {-52} \\ {30} & {-45} & {-60}\end{array}\right]$
+\\~\\Finally, we must compute $\mathcal{Q} \times_{3} C\in\mathbb{R}^{3\times 3\times 2}$. Recall that $C=\left[\begin{array}{cc}{1} & {0} \\ {0} & {-1}\end{array}\right]$. 
+\\~\\Also recall that $\displaystyle\left(\mathcal{Q} \times_{3} C\right)_{i j h}=\sum_{s=1}^{m} c_{h s} q_{i j s}$.
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{111}=c_{11}q_{111}+c_{12}q_{112}=(2)(26)+(0)(14)=52$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{112}=c_{21}q_{111}+c_{22}q_{112}=(0)(26)+(-1)(14)=-14$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{121}=c_{11}q_{121}+c_{12}q_{122}=(2)(-39)+(0)(-21)=-78$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{122}=c_{21}q_{121}+c_{22}q_{122}=(0)(-39)+(-1)(-21)=21$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{131}=c_{11}q_{131}+c_{12}q_{132}=(2)(4)+(0)(-44)=8$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{132}=c_{21}q_{131}+c_{22}q_{132}=(0)(4)+(-1)(-44)=44$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{211}=c_{11}q_{211}+c_{12}q_{212}=(2)(34)+(0)(22)=68$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{212}=c_{21}q_{211}+c_{22}q_{212}=(0)(34)+(-1)(22)=-22$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{221}=c_{11}q_{221}+c_{12}q_{222}=(2)(-51)+(0)(-33)=-102$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{222}=c_{21}q_{221}+c_{22}q_{222}=(0)(-51)+(-1)(-33)=33$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{231}=c_{11}q_{231}+c_{12}q_{232}=(2)(-4)+(0)(-52)=-8$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{232}=c_{21}q_{231}+c_{22}q_{232}=(0)(-4)+(-1)(-52)=52$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{311}=c_{11}q_{311}+c_{12}q_{312}=(2)(42)+(0)(30)=84$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{312}=c_{21}q_{311}+c_{22}q_{312}=(0)(42)+(-1)(30)=-30$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{321}=c_{11}q_{321}+c_{12}q_{322}=(2)(-63)+(0)(-45)=-126$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{322}=c_{21}q_{331}+c_{22}q_{332}=(0)(-63)+(-1)(-45)=45$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{331}=c_{11}q_{331}+c_{12}q_{332}=(2)(-12)+(0)(-60)=-24$
+\\~\\$\left(\mathcal{Q}\times_3 C\right)_{332}=c_{21}q_{331}+c_{22}q_{332}=(0)(-12)+(-1)(-60)=60$
+\\~\\Let $\mathcal{R}=\left(\mathcal{Q} \times_{3} C\right)$. Then $\mathcal{R}\left(:, :, 1\right)=\left[\begin{array}{ccc}{52} & {-78} & {8} \\ {68} & {-102} & {-8} \\ {84} & {-126} & {-24}\end{array}\right]$ and $\mathcal{R}\left(:, :, 2\right)=\left[\begin{array}{ccc}{-14} & {21} & {44} \\ {-22} & {33} & {52} \\ {-30} & {45} & {60}\end{array}\right]$
+Finally, we can conclude that $\mathcal{G} \times_{1} A \times_{2} B \times_{3} C=\mathcal{R}$ which is defined above.
+
+
+\end{document}

@@ -1,0 +1,169 @@
+\documentclass[12pt]{article}
+%% make references and citations clickable
+\usepackage[backref,colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue, pdfborder={0 0 0}]{hyperref}
+
+%% set the paper geometry
+\usepackage[left=1in,top=1in,right=1in,bottom=1in,letterpaper]{geometry}
+
+%% uncomment the next line if you need to present an algorithm
+%\usepackage{algorithm,algorithmic}
+
+%% standard AMS stuff
+\usepackage{amssymb,amsmath,amsthm}
+
+%% for including urls by \url{url text}
+\usepackage{url}
+
+%% packages for  code
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+%% Some useful shorthand commands
+\newcommand{\bfx}{{\bf x}}
+\newcommand{\bfb}{{\bf b}}
+\newcommand{\bfu}{{\bf u}}
+\newcommand{\bfv}{{\bf v}}
+\newcommand{\bfw}{{\bf w}}
+
+%% Define Q.E.D. symbol
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\begin{document}
+%% -------------- Problem ------------------
+\newpage
+\subsection*{Problem 1} 
+Let $U \in \mathbb{R}^{m \times n}$, $V \in \mathbb{R}^{m \times r}$, $U^{\top}\in\mathbb{R}^{n\times m}$ and $W \in \mathbb{R}^{r \times n}$. Show that $U^{\top} V=\left[\begin{array}{cccc}{\mathbf{u}_{1}^{\top} \mathbf{v}_{1}} & {\mathbf{u}_{1}^{\top} \mathbf{v}_{2}} & {\dots} & {\mathbf{u}_{1}^{\top} \mathbf{v}_{r}} \\ {\vdots} & {\ddots} & {\ddots} & {\vdots} \\ {\mathbf{u}_{n}^{\top} \mathbf{v}_{1}} & {\mathbf{u}_{n}^{\top} \mathbf{v}_{2}} & {\dots} & {\mathbf{u}_{n}^{\top} \mathbf{v}_{r}}\end{array}\right]$.
+
+\bigskip
+\noindent\textbf{Answer:} 
+\\~\\\textbf{(a)} $U^{\top}=\left[\bfu_1^{\top}, \bfu_2^{\top}, \dots, \bfu_n^{\top}\right]$ where $\bfu_i^{\top}\in\mathbb{R}^{1\times m}$. $V=\left[\bfv_1, \bfv_2, \dots, \bfv_r\right]$ where $\bfv_i\in\mathbb{R}^{m\times 1}$.
+\\~\\$\bfu_i^{\top}\bfv_j\in\mathbb{R}$ and represents the inner product of row $i$ of $U$ and column $j$ of $V$.
+\\~\\$U^{\top}V=\left[\bfu_1^{\top}, \bfu_2^{\top}, \dots, \bfu_n^{\top}\right]\left[\bfv_1, \bfv_2, \dots, \bfv_r\right]\in\mathbb{R}^{n\times r}$
+\\~\\$=\left[U^{\top}\left[\begin{array}{c}{\bfv_1} \\ {\vdots} \\ {\bfv_1}\end{array}\right], U^{\top}\left[\begin{array}{c}{\bfv_2} \\ {\vdots} \\ {\bfv_2}\end{array}\right], \dots, U^{\top}\left[\begin{array}{c}{\bfv_r} \\ {\vdots} \\ {\bfv_r}\end{array}\right]\right]$
+\\~\\$=\left[\begin{array}{cccc}{\mathbf{u}_{1}^{\top} \mathbf{v}_{1}} & {\mathbf{u}_{1}^{\top} \mathbf{v}_{2}} & {\dots} & {\mathbf{u}_{1}^{\top} \mathbf{v}_{r}} \\ {\vdots} & {\ddots} & {\ddots} & {\vdots} \\ {\mathbf{u}_{n}^{\top} \mathbf{v}_{1}} & {\mathbf{u}_{n}^{\top} \mathbf{v}_{2}} & {\dots} & {\mathbf{u}_{n}^{\top} \mathbf{v}_{r}}\end{array}\right]$
+\\~\\~\\\textbf{(b)} Show that $\displaystyle UW^{\top}=\sum_{i=1}^{n} \mathbf{u}_{i} \mathbf{w}_{i}^{\top}$
+\\~\\Recall: $W^{\top}\in\mathbb{R}^{n\times r}$, therefore $UW^{\top}\in\mathbb{R}^{m\times r}$.
+\\~\\$UW^{\top}=\left[\bfu_1, \bfu_2, \dots, \bfu_n\right]\left[\begin{array}{c}{\bfw_1^{\top}} \\ {\bfw_2^{\top}} \\ {\vdots} \\  {\bfw_n^{\top}}\end{array}\right]$ Where $\bfu_i\in\mathbb{R}^m$, $\bfw_j^{\top}\in\mathbb{R}^{1\times r}$. This is just a vector outer product: $\displaystyle =\bfu_1\bfw_1^{\top} + \bfu_2\bfw_2^{\top} + \dots + \bfu_n\bfw_n^{\top}=\sum_{i=1}^{n} \mathbf{u}_{i} \mathbf{w}_{i}^{\top}$
+\\~\\~\\\textbf{(c)} Show that $U^{\top} V=\left[U^{\top} \mathbf{v}_{1}, U^{\top} \mathbf{v}_{2}, \ldots, U^{\top} \mathbf{v}_{r}\right]$
+\\~\\ (Note: I did not read part (c) before I completed part (a), so I actually already showed the solution to part (c) above. I will reiterate it here in part (c))
+\\~\\$U^{\top}V=\left[\bfu_1^{\top}, \bfu_2^{\top}, \dots, \bfu_n^{\top}\right]\left[\bfv_1, \bfv_2, \dots, \bfv_r\right]\in\mathbb{R}^{n\times r}$
+\\~\\$=\left[U^{\top}\left[\begin{array}{c}{\bfv_1} \\ {\vdots} \\ {\bfv_1}\end{array}\right], U^{\top}\left[\begin{array}{c}{\bfv_2} \\ {\vdots} \\ {\bfv_2}\end{array}\right], \dots, U^{\top}\left[\begin{array}{c}{\bfv_r} \\ {\vdots} \\ {\bfv_r}\end{array}\right]\right]=\left[U^{\top} \mathbf{v}_{1}, U^{\top} \mathbf{v}_{2}, \ldots, U^{\top} \mathbf{v}_{r}\right]$
+
+%% -------------- Problem ------------------
+\newpage
+\subsection*{Problem 2} 
+\textit{(k-means)} In this question you will work through a single iteration of k-means for a simple data set. Let $\mathcal{X}=\left\{\mathbf{x}_{1}, \ldots, \mathbf{x}_{10}\right\} \subset \mathbb{R}$ where:
+\\~\\$\begin{array}{l}{\mathbf{x}_{1}=-0.82, \quad \mathbf{x}_{2}=-1.33 \quad \mathbf{x}_{3}=-3.63, \quad \mathbf{x}_{4}=-1.62, \quad \mathbf{x}_{5}=-2.95} \\ {\mathbf{x}_{6}=0.95, \quad \mathbf{x}_{7}=0.53, \quad \mathbf{x}_{8}=1.79, \quad \mathbf{x}_{9}=0.95 \text { and } \mathbf{x}_{10}=2.28}\end{array}$
+\\~\\We will compute k-means for $k=2$, and our randomly initialized $\Pi^{(0)}=[2,1,1,1,2,2,1,2,1,2]^{\top}$ where $\bfx_i\in\mathcal{X}_{(\Pi^{(0)})_i}$. To avoid confusion, the indices of my array will begin at 1, so $(\Pi^{(0)})_1=2$.
+\\~\\$\mathcal{X}_1^{(0)}=\left[\bfx_2, \bfx_3, \bfx_4, \bfx_7, \bfx_9\right]$ and $\mathcal{X}_2^{(0)}=\left[\bfx_1, \bfx_5, \bfx_6, \bfx_8, \bfx_{10}\right]$. $\displaystyle \mu_{1}^{(0)}=\frac{1}{5}\sum_{i=1}^{5} (\mathcal{X}_1^{(0)})_i=-1.02$.
+\\~\\$\displaystyle \mu_{2}^{(0)}=\frac{1}{5}\sum_{i=1}^{5} (\mathcal{X}_2^{(0)})_i=0.25$. $x_i\in\mathcal{X}_j^{(1)}$ for $j=\arg\min_{j}|\mu_j-\bfx_i|, j\in \{1, 2\}$.
+\\~\\$\bfx_1$: $|\mu_1-\bfx_1|=0.2$. $|\mu_2-\bfx_1|=1.07$. Therefore $\bfx_1\in\mathcal{X}_1^{(1)}$
+\\~\\$\bfx_2$: $|\mu_1-\bfx_2|=0.31$. $|\mu_2-\bfx_2|=1.58$. Therefore $\bfx_2\in\mathcal{X}_1^{(1)}$
+\\~\\$\bfx_3$: $|\mu_1-\bfx_3|=2.61$. $|\mu_2-\bfx_3|=3.88$. Therefore $\bfx_3\in\mathcal{X}_1^{(1)}$
+\\~\\$\bfx_4$: $|\mu_1-\bfx_4|=0.6$. $|\mu_2-\bfx_4|=1.87$. Therefore $\bfx_2\in\mathcal{X}_1^{(1)}$
+\\~\\$\bfx_5$: $|\mu_1-\bfx_5|=1.93$. $|\mu_2-\bfx_5|=3.2$. Therefore $\bfx_5\in\mathcal{X}_1^{(1)}$
+\\~\\$\bfx_6$: $|\mu_1-\bfx_6|=1.97$. $|\mu_2-\bfx_6|=0.7$. Therefore $\bfx_6\in\mathcal{X}_2^{(1)}$
+\\~\\$\bfx_7$: $|\mu_1-\bfx_7|=1.55$. $|\mu_2-\bfx_7|=0.28$. Therefore $\bfx_7\in\mathcal{X}_2^{(1)}$
+\\~\\$\bfx_8$: $|\mu_1-\bfx_8|=2.81$. $|\mu_2-\bfx_8|=1.54$. Therefore $\bfx_8\in\mathcal{X}_2^{(1)}$
+\\~\\$\bfx_9$: $|\mu_1-\bfx_9|=1.97$. $|\mu_2-\bfx_9|=0.7$. Therefore $\bfx_9\in\mathcal{X}_2^{(1)}$
+\\~\\$\bfx_{10}$: $|\mu_1-\bfx_{10}|=3.3$. $|\mu_2-\bfx_{10}|=2.03$. Therefore $\bfx_{10}\in\mathcal{X}_2^{(1)}$.
+\\~\\Now we know $\mathcal{X}_1^{(1)}$ and $\mathcal{X}_2^{(1)}$: $\mathcal{X}_1^{(1)}=\left[\bfx_1, \bfx_2, \bfx_3, \bfx_4, \bfx_5\right]$. $\mathcal{X}_2^{(1)}=\left[\bfx_6, \bfx_7, \bfx_8, \bfx_9, \bfx_{10}\right]$.
+\\~\\Finally, we can conclude that $\Pi^{(1)}=[1,1,1,1,1,2,2,2,2,2]^{\top}$.
+\\~\\To check my results with python, I wrote the following script:
+\begin{lstlisting}
+// K-means.py
+x = [-0.82, -1.33, -3.63, -1.62, -2.95, 0.95, 0.53, 1.79, 0.95, 2.28]
+pi_1 = [1, 0, 0, 0, 1, 1, 0, 1, 0, 1]
+chi_1=[]
+chi_2=[]
+
+print("x = ", x)
+print("pi_1: ", pi_1)
+
+for index, val in enumerate(x):
+   if pi_1[index] == 0:
+      chi_1.append(val)
+   else:
+      chi_2.append(val)
+print("\nchi_1: ", chi_1)
+print("chi_2: ", chi_2)
+
+mu_1 = sum(chi_1) / len(chi_1)
+mu_2 = sum(chi_2) / len(chi_2)
+print("\nmu_1: ", mu_1)
+print("mu_2: ", mu_2)
+
+pi_2 = []
+for val in x:
+   dist_from_mu_1 = abs(mu_1 - val)
+   dist_from_mu_2 = abs(mu_2 - val)
+
+   pi_2.append(int(dist_from_mu_2 < dist_from_mu_1))
+
+print("\npi_2: ", pi_2)
+
+"""########OUTPUT########
+x =  [-0.82, -1.33, -3.63, -1.62, -2.95, 0.95, 0.53, 1.79, 0.95, 2.28]
+pi_1:  [1, 0, 0, 0, 1, 1, 0, 1, 0, 1]
+
+chi_1:  [-1.33, -3.63, -1.62, 0.53, 0.95]
+chi_2:  [-0.82, -2.95, 0.95, 1.79, 2.28]
+
+mu_1:  -1.02
+mu_2:  0.24999999999999992
+
+pi_2:  [0, 0, 0, 0, 0, 1, 1, 1, 1, 1]
+"""
+\end{lstlisting}
+
+%% -------------- Problem ------------------
+\newpage
+\subsection*{Problem 3}
+\textit{Non-negative matrix factorization} Matrix $X$ represents the normalized buying habits of customers of a grocery store, with each column representing a customer (customers 1 through 5) and each row representing a product category (Bread, Fruits/Vegetables, Cigarettes, Milk, Canned Food, and Newspaper).
+\\~\\$X=\left[\begin{array}{ccccc}{0.735} & {0.179} & {0.079} & {0.698} & {0.307} \\ {0.093} & {0.655} & {0.655} & {0.436} & {0.604} \\ {0.686} & {0.782} & {0.547} & {0.427} & {0.471} \\ {0.138} & {0.223} & {0.573} & {0.846} & {0.164} \\ {0.427} & {0.018} & {0.488} & {0.193} & {0.819} \\ {0.78} & {0.69} & {0.354} & {0.221} & {0.184}\end{array}\right]$
+\\~\\Let $W$ and $H$ represent the decomposition of matrix $X$, such that $X\approx WH$
+\\~\\$W=\left[\begin{array}{ccc}{0.162} & {0.449} & {0.696} \\ {0.784} & {0.0} & {0.0} \\ {0.632} & {0.599} & {0.0} \\ {0.413} & {0.0} & {0.648} \\ {0.62} & {0.0} & {0.0} \\ {0.336} & {0.766} & {0.0}\end{array}\right]H=\left[\begin{array}{ccccc}{0.268} & {0.557} & {0.896} & {0.538} & {0.854} \\ {0.94} & {0.595} & {0.0} & {0.0} & {0.0} \\ {0.226} & {0.0} & {0.0} & {0.917} & {0.0}\end{array}\right]$
+\\~\\\textbf{(a)} From our matrices $W$ and $H$, we can extract information about the customer buying habits. Each row of $W$ represents one of the six food categories, and the product sum of that row with each column of $H$ will give us the amount each customer purchases of that category. Each column of $W$ represents a segment of customers, and row $i$ col $j$ of $W$ tells us how much product category $i$ belongs in segment $j$.
+\\~\\The columns of $H$ each correspond to one customer. When looking at the dimensions and the number of categories/customers, this is confirmed. We can view the columns of $W$ as segments, and whatever row of column $k$ of $H$ has the largest scalar will correspond to whatever segment that customer belongs in. Since $r=3$, we are creating 3 segments of customers. We can place a customer into a segment by using the following formula: Customer $x$ belongs in segment $y=\arg\max_y(H_{yx})$ where $y\in\{1, 2, 3\}$. 
+\\~\\\textbf{(b)} With that being said, row 2 col 1 of $H$ is $0.94$, which is the largest row in column 1. Therefore, customer 1 belongs mostly to category 2.
+\\~\\\textbf{(c)} Similarly, the largest row in column 3 is row 1 with a value of $0.896$. Therefore customer 3 would be placed in segment 1.
+
+%% -------------- Problem ------------------
+\newpage
+\subsection*{Problem 4}
+\textit{Spectral Clustering} Let $A$ denote the adjacency matrix of graph $G$. Laplacian $L=D-A$ where $D$ is a diagonal matrix where $\displaystyle d_{i}=\sum_{j=1}^{n} A_{ij}$ and let $\mathbf{I}_{s}=\left\{\begin{aligned} \sqrt{\frac{\left|S^{c}\right|}{|S|}} & \text { if } v_{i} \in S \\-\sqrt{\frac{|S|}{\left|S^{c}\right|}} & \text { if } v_{i} \notin S \end{aligned}\right.$ 
+\\For any $S\subset V$.
+\\~\\\textbf{(a)} Show that $L \mathbf{1}=0$ where $\mathbf{1}$ denotes the all-ones vector:
+\\~\\Let $A, D, L\in\mathbb{R}^{n\times n}$. Then $L_{i j}=\left\{\begin{array}{ll}{d_{i}} & {: \text { if } i=j} \\ {-1} & {: \text { if }(i, j) \text { is an edge }} \\ {0} & {: \text { if no edge between }(i, j)}\end{array}\right.$
+\\~\\We want to show that the sum of every row in $L$ is 0. For any row of $L$, we have $d_i$ as the sum of col $i$ of $A$ which is the number of edges of vertex $i$. 
+\\~\\We add -1 for every edge of $i$ to $d_i$, which itself is the number of edges of vertex $i$. 
+\\~\\Therefore, every column (and row for that matter) of $L$ has a sum of zero, and therefore $L \mathbf{1}=0$. Since $L \mathbf{1}=0$, 0 is always an eigenvalue for $L$.
+\\~\\\textbf{(b)} Suppose that $G$ has two connected components: $V=S_{1} \cup S_{2}$. Show that $L \mathbf{1}_{S_{1}}=0$
+\\~\\We define $\left(\mathbf{1}_{S_1}\right)_{i}:=\left\{\begin{array}{ll}{1} & {\text { if } v_{i} \in S_1} \\ {0} & {\text { otherwise }}\end{array}\right.$
+\\~\\Since $S_1\cap S_2 = \{0\}$, $S_1$ and $S_2$ share no edges. This means that every row of $\mathbf{1}_{S_{1}}$ that equals zero corresponds with a column in $L$ that represents an edge not in $S_1$. 
+\\~\\Since all the edges that are not in $S_1$ get multiplied by zero during the matrix-vector product, the reasoning for why $L \mathbf{1}_{S_{1}}=0$ is similar to why $L \mathbf{1}=0$. 
+\\~\\\textbf{(c)} It is a fact that $\displaystyle\mathbf{v}^{\top} L \mathbf{v}=\frac{1}{2} \sum_{i, j} A_{i j}\left(v_{i}-v_{j}\right)^{2}$ for any $\bfv\in\mathbb{R}^n$. Use that to show that $\operatorname{Rcut}(S)=\frac{1}{n^{2}} \mathbf{I}_{S}^{\top} L \mathbf{I}_{S}$.
+\\~\\Lets look at the $\mathbf{I}_{S}^{\top} L \mathbf{I}_{S}$ term. We want to show that $\mathbf{I}_{S}^{\top} L \mathbf{I}_{S}=\frac{n^{2}|d S|}{|S|\left|S^{c}\right|}$, since by definition $\operatorname{RCut}(S)=\frac{|\partial S|}{|S|\left|S^{c}\right|}$
+\\~\\
+\end{document}
